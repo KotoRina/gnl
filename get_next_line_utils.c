@@ -6,15 +6,15 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:16:02 by rin               #+#    #+#             */
-/*   Updated: 2020/12/03 17:08:40 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/03 21:20:15 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	my_strlen(char	*line)
+size_t			my_strlen(char *line)
 {
-	size_t	len;
+	size_t		len;
 
 	len = 0;
 	if (!line)
@@ -24,10 +24,10 @@ size_t	my_strlen(char	*line)
 	return (len);
 }
 
-char	*my_join(char *line, char c)
+char			*my_join(char *line, char c)
 {
-	char *res;
-	int len;
+	char		*res;
+	int			len;
 
 	len = 0;
 	res = (char *)malloc(sizeof(char) * (my_strlen(line) + 2));
@@ -39,5 +39,5 @@ char	*my_join(char *line, char c)
 	res[len] = c;
 	len++;
 	res[len] = '\0';
-	return(res);
+	return (res);
 }

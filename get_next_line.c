@@ -6,7 +6,7 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:16:09 by rin               #+#    #+#             */
-/*   Updated: 2020/12/03 21:14:05 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/03 21:20:52 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,3 @@ int					get_next_line(int fd, char **line)
 	}
 	return (0);
 }
-
-/*
-int main()
-{
-	int		file;
-	char	*line;
-
-	file = open("test", O_RDONLY);
-	while(get_next_line(file, &line))
-	{
-		printf("%s\n", line);
-		//free(line);
-	}
-	//printf("%s\n", line);
-	return (0);
-}
-*/
