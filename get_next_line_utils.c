@@ -6,10 +6,11 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:16:02 by rin               #+#    #+#             */
-/*   Updated: 2020/12/04 02:29:20 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/04 02:56:04 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
 size_t			my_strlen(char *line)
 {
@@ -45,6 +46,6 @@ char			*my_join(char *line, char c)
 	res[len] = c;
 	len++;
 	res[len] = '\0';
-	//free(line);
+	free(line);
 	return (res);
 }
