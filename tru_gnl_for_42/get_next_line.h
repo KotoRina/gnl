@@ -6,7 +6,7 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 21:26:30 by rin               #+#    #+#             */
-/*   Updated: 2020/12/15 04:23:15 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/15 16:14:44 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
 int			get_next_line(int fd, char **line);
 size_t		my_strlen(const char *str);

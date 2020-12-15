@@ -6,24 +6,27 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 21:26:33 by rin               #+#    #+#             */
-/*   Updated: 2020/12/15 04:23:02 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/15 19:41:04 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 * Especially for those who call me a cheater (including the bocal).
-* Only because you suddenly decided that I was writing off the code - I will not write bad code and insert crutches.
-* I despise those who thoughtlessly cheat without understanding and optimizing the solution.
+* Only because you suddenly decided that I was writing off the code
+* - I will not write bad code and insert crutches.
+* I despise those who thoughtlessly cheat without understanding
+* and optimizing the solution.
 * I do not despise those who take the algorithm and implement it beautifully.
-* If you think that I am cheating, look at you. Then you are also cheating. 
-* Because every time you implement an algorithm that has been implemented before you - you're cheating.
+* If you think that I am cheating, look at you. Then you are also cheating.
+* Because every time you implement an algorithm that has been implemented
+* before you - you're cheating.
 */
 
 #include "get_next_line.h"
 
 static int			find_next_line(char *str)
 {
-	int len;
+	int				len;
 
 	if (!str)
 		return (0);
@@ -35,11 +38,11 @@ static int			find_next_line(char *str)
 	return (0);
 }
 
-static char		*save_buf(char *save, char *buf)
+static char			*save_buf(char *save, char *buf)
 {
-	int		len_save;
-	int		len_buf;
-	char	*result;
+	int				len_save;
+	int				len_buf;
+	char			*result;
 
 	if (!save && !buf)
 		return (0);
@@ -61,11 +64,11 @@ static char		*save_buf(char *save, char *buf)
 	return (result);
 }
 
-static void		split(char **remainder, char ***line, int len, int i)
+static void			split(char **remainder, char ***line, int len, int i)
 {
-	char	*result_remainder;
-	char	*rem;
-	char	*result_line;
+	char			*res_remainder;
+	char			*rem;
+	char			*result_line;
 
 	if (!*remainder)
 	{
@@ -76,33 +79,26 @@ static void		split(char **remainder, char ***line, int len, int i)
 	while (rem[len] && rem[len] != '\n')
 		len++;
 	result_line = (char *)malloc(sizeof(char) * (len + 1));
-	len = 0;
-	while (rem[len] && rem[len] != '\n')
-	{
+	len = -1;
+	while (rem[++len] && rem[len] != '\n')
 		result_line[len] = rem[len];
-		len++;
-	}
-	len++;
+	result_line[len++] = '\0';
 	**line = result_line;
-	result_remainder = (char *)malloc(sizeof(char) * (my_strlen(rem) - len + 1));
+	res_remainder = (char *)malloc(sizeof(char) * (my_strlen(rem) - len + 1));
 	while (rem[len])
-		result_remainder[i++] = rem[len++];
-	result_remainder[i] = '\0';
+		res_remainder[i++] = rem[len++];
+	res_remainder[i] = '\0';
 	free(*remainder);
-	*remainder = result_remainder;
+	*remainder = res_remainder;
 }
 
-int		get_next_line(int fd, char **line)
+int					get_next_line(int fd, char **line)
 {
 	char			*buf;
 	static char		*save;
 	int				reader;
-	int				len;
-	int				iter;
 
 	reader = 1;
-	len = 0;
-	iter = 0;
 	if (fd < 0 || !line || BUFFER_SIZE <= 0 ||
 	!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
@@ -117,7 +113,7 @@ int		get_next_line(int fd, char **line)
 		save = save_buf(save, buf);
 	}
 	free(buf);
-	split(&save, &line, len, iter);
+	split(&save, &line, 0, 0);
 	if (reader == 0)
 		return (0);
 	return (1);
