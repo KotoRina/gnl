@@ -6,7 +6,7 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 21:26:33 by rin               #+#    #+#             */
-/*   Updated: 2020/12/15 19:41:04 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/15 19:48:18 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static char			*save_buf(char *save, char *buf)
 		return (0);
 	len_buf = my_strlen(buf);
 	len_save = my_strlen(save);
-	result = (char *)malloc(sizeof(char) * (1 + len_save + len_buf));
+	if (!(result = (char *)malloc(sizeof(char) * (1 + len_save + len_buf))))
+		return (0);
 	len_buf = 0;
 	len_save = 0;
 	if (save)
@@ -66,7 +67,7 @@ static char			*save_buf(char *save, char *buf)
 
 static void			split(char **remainder, char ***line, int len, int i)
 {
-	char			*res_remainder;
+	char			*res_save;
 	char			*rem;
 	char			*result_line;
 
@@ -78,18 +79,19 @@ static void			split(char **remainder, char ***line, int len, int i)
 	rem = *remainder;
 	while (rem[len] && rem[len] != '\n')
 		len++;
-	result_line = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(result_line = (char *)malloc(sizeof(char) * (len + 1))) ||
+	!(res_save = (char *)malloc(sizeof(char) * (my_strlen(rem) - len + 2))))
+		return ;
 	len = -1;
 	while (rem[++len] && rem[len] != '\n')
 		result_line[len] = rem[len];
 	result_line[len++] = '\0';
 	**line = result_line;
-	res_remainder = (char *)malloc(sizeof(char) * (my_strlen(rem) - len + 1));
 	while (rem[len])
-		res_remainder[i++] = rem[len++];
-	res_remainder[i] = '\0';
+		res_save[i++] = rem[len++];
+	res_save[i] = '\0';
 	free(*remainder);
-	*remainder = res_remainder;
+	*remainder = res_save;
 }
 
 int					get_next_line(int fd, char **line)
