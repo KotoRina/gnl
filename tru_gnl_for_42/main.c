@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 21:26:36 by rin               #+#    #+#             */
-/*   Updated: 2020/12/15 03:43:55 by rin              ###   ########.fr       */
+/*   Created: 2020/12/04 21:59:22 by rin               #+#    #+#             */
+/*   Updated: 2020/12/15 03:03:05 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		my_strlen(const char *str)
+int main()
 {
-	int len;
+	int file;
+	char *line;
 
-	if (!str)
-		return (0);
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+	file = open("test", O_RDONLY);
+	while (get_next_line(file, &line))
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	printf("%s\n", line);
+	free(line);
+	return (0);
 }
