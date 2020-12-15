@@ -6,7 +6,7 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 21:26:33 by rin               #+#    #+#             */
-/*   Updated: 2020/12/15 03:43:50 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/15 04:10:05 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int			find_next_line(char *str)
 	len = 0;
 	while (str[len] && str[len] != '\n')
 		len++;
-	if (len != my_strlen(str))
+	if (len != (int)my_strlen(str))
 		return (1);
 	return (0);
 }
@@ -78,7 +78,10 @@ static void		split(char **remainder, char ***line, int len, int i)
 	result_line = (char *)malloc(sizeof(char) * (len + 1));
 	len = 0;
 	while (rem[len] && rem[len] != '\n')
-		result_line[len++] = rem[len];
+	{
+		result_line[len] = rem[len];
+		len++;
+	}
 	len++;
 	**line = result_line;
 	result_remainder = (char *)malloc(sizeof(char) * (my_strlen(rem) - len + 1));
