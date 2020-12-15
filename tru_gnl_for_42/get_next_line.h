@@ -6,7 +6,7 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 21:26:30 by rin               #+#    #+#             */
-/*   Updated: 2020/12/15 04:10:11 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/15 04:23:15 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
 # include <stdio.h>
 
 int			get_next_line(int fd, char **line);

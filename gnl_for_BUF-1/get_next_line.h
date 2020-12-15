@@ -6,7 +6,7 @@
 /*   By: rin <rin@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:16:13 by rin               #+#    #+#             */
-/*   Updated: 2020/12/04 02:55:32 by rin              ###   ########.fr       */
+/*   Updated: 2020/12/15 04:22:48 by rin              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
-# include <fcntl.h>
-# include <stdio.h>
 # include <unistd.h>
 
 typedef	struct	s_gnl
